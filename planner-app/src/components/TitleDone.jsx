@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Title extends React.Component {
+class TitleDone extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -10,8 +10,8 @@ class Title extends React.Component {
 
     render() {
         return(
-            <h1 className="p-3">To Do List</h1> 
+            <h1 className="p-3">Done</h1> 
         );
     }
 }
-export default Title
+export default TitleDone
