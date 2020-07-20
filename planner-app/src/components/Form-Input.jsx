@@ -1,53 +1,40 @@
 import { Fragment } from "react";
 import React from "react";
-import ListItem from "./ListItem";
-import List from "./List"
 
 class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: "",
+      todoText: '',
     };
-    this.addToDO = this.addToDO.bind(this);
-  }
-  isSubmitted = false;
-
-  handleValueChange(event) {
-    this.setState({ todo: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleValueChange = (event) => {
+    this.setState({
+      todoText: event.target.value
+    })
+  };
+
+  handleSubmit = event => {
     event.preventDefault();
-    console.log(`${this.state.todo}`);
-    this.addToDO(this.state.todo);
     event.target.reset();
-  }
-   
-  addToDO(users_input) {
-        let item = {
-            name: users_input,
-            id : Date.now()
-        }
-      this.state.todo.concat(item);
-      console.log(item);
-  }
+    this.props.onSubmit({
+      id: Date.now(),
+      text: this.state.todoText,
+      complete: false,
+    });
+  };
+
   render() {
     return (
-      <Fragment>
-        <div className="form-wrapper">
+        <div>
           <form
-            onSubmit={(event) => {
-              this.isSubmitted = true;
-              this.handleSubmit(event);
-            }}
+            onSubmit={this.handleSubmit}
           >
             <div className="form">
               <input
-                value={this.props.todo}
-                onChange={(event) => {
-                  this.handleValueChange(event);
-                }}
+                name="text"
+                onChange={this.handleValueChange}
                 className="input-field"
                 type="text"
                 placeholder="What should I do?"
@@ -60,13 +47,8 @@ class FormInput extends React.Component {
               </button>
             </div>
           </form>
-          <div className="list-wrapper">
-            {this.isSubmitted ? 
-                (<ListItem toDoName={this.state.todo}></ListItem>)
-                : null}
-          </div>
         </div>
-      </Fragment>
+
     );
   }
 }

@@ -1,12 +1,26 @@
 import React from "react";
+import FormInput from "./Form-Input";
 
 class ListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+    state = {
+      todos: [] 
+    }
+
+
+  addTodo = todo => {
+    this.setState({
+      todos: [todo, ...this.state.todos]
+    });
+  };
 
   render() {
-    return <li> {this.props.toDoName} </li>;
+    return (<div className="form-wrapper">
+       <FormInput onSubmit = {this.addTodo}></FormInput>
+       {this.state.todos.map(todo => (
+         <div className="list" key={todo.id}>{todo.text}</div>
+       ))}
+       </div>
+    );
   }
 }
 
