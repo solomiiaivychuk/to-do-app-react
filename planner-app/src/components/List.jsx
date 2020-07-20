@@ -12,7 +12,6 @@ class List extends React.Component {
     render() {
         return(
             <ul className="to-do-list p-0 m-2">
-                <ListItem></ListItem>
             </ul>
         )
     }
