@@ -4,13 +4,13 @@ class Title extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name : ''
+            name : 'To Do List'
         }
     }
 
     render() {
         return(
-            <h1 className="p-3">To Do List</h1> 
+            <h1 className="p-3"> { this.state.name } </h1> 
         );
     }
 }

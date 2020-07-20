@@ -4,13 +4,13 @@ class TitleDone extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name : ''
+            name : 'Done'
         }
     }
 
     render() {
         return(
-            <h1 className="p-3">Done</h1> 
+        <h1 className="p-3"> { this.state.name } </h1> 
         );
     }
 }
