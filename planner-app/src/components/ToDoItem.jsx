@@ -11,7 +11,13 @@ class ToDoItem extends React.Component {
         <span className="todo-text">{this.props.todo.text}</span>
         <span className="buttons-block">
             <button className="delete-button" onClick={this.props.deleteItem}>&#10006;</button>
-            <button className="favourite-button">&#9733;</button>
+            <button 
+                style={{color: this.props.todo.favourite ? 'red' : ''}} 
+                className="favourite-button" 
+                onClick={this.props.addToFavourite}
+                >
+                    &#9733;
+            </button>
             <button className="edit-button">&#9998;</button>   
          </span>
       </div>
