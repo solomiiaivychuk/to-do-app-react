@@ -32,6 +32,11 @@ class ToDoList extends React.Component {
     })
   }
 
+  deleteItem(id) {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    })
+  }
   render() {
 
     return (<div className="form-wrapper">
@@ -41,8 +46,9 @@ class ToDoList extends React.Component {
           <ToDoItem 
             key={todo.id}
             id={todo.id} 
-            handleDoneClick={() => this.handleDoneClick(todo.id)}
             todo={todo}
+            handleDoneClick={() => this.handleDoneClick(todo.id)}
+            deleteItem={() => this.deleteItem(todo.id)}
           > 
           </ToDoItem>
        ))}
@@ -52,8 +58,9 @@ class ToDoList extends React.Component {
          <ToDoItem
             key={todo.id}
             id={todo.id}
-            handleDoneClick={() => this.handleDoneClick(todo.id)} 
             todo={todo}
+            handleDoneClick={() => this.handleDoneClick(todo.id)} 
+            deleteItem={() => this.deleteItem(todo.id)}
             > 
           </ToDoItem> : ''
        ))}
