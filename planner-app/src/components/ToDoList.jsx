@@ -5,8 +5,7 @@ import DoneTitle from './DoneTitle'
 
 class ToDoList extends React.Component {
     state = {
-      todos: [],
-      dones: [] 
+      todos: []
     }
 
   addTodo(todo) {
@@ -48,11 +47,12 @@ class ToDoList extends React.Component {
           </ToDoItem>
        ))}
        <DoneTitle></DoneTitle>
-       {this.state.todos.filter(todo => todo.complete === true).map(todo => (
+       {this.state.todos.map(todo => (
          todo.complete? 
          <ToDoItem
             key={todo.id}
-            id={todo.id} 
+            id={todo.id}
+            handleDoneClick={() => this.handleDoneClick(todo.id)} 
             todo={todo}
             > 
           </ToDoItem> : ''

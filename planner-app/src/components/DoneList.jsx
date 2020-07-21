@@ -11,7 +11,7 @@ class DoneList extends React.Component {
 
     render() {
         return (
-            <DoneItem></DoneItem>
+            <div></div>
         )
     }
 }
