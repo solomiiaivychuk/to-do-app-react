@@ -46,6 +46,7 @@ body {
 .list {
   display: flex;
   align-self: center;
+  justify-content: space-between;
   width: 42rem;
   background-color: rgb(169, 181, 231);
   border: 1px solid rgb(126, 144, 226);
@@ -75,11 +76,14 @@ body {
 .delete-button:focus, .favourite-button:focus, .edit-button:focus, .done-button:focus {
   outline: none;
 }
+.buttons-block {
+  margin-right: 1rem;
+  align-self: center;
+
+}
 .delete-button, .favourite-button, .edit-button {
-  justify-self: flex-end;
   width: 2rem;
   border-radius: 1rem;
-  align-self: center;
   margin: 0 0.3rem;
   height: 2rem;
   border: 0px;
