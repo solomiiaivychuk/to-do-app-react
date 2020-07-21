@@ -8,9 +8,11 @@ class ListItem extends React.Component {
 
 
   addTodo = todo => {
-    this.setState({
-      todos: [todo, ...this.state.todos]
-    });
+    if (todo.text != '') {
+      this.setState({
+        todos: [todo, ...this.state.todos]
+      });
+    }
   };
 
   render() {

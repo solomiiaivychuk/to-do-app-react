@@ -9,15 +9,18 @@ class FormInput extends React.Component {
     };
   }
 
-  handleValueChange = (event) => {
-    this.setState({
+  handleValueChange(event) {
+      this.setState({
       todoText: event.target.value
     })
   };
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
     event.target.reset();
+    this.setState({
+      todoText: ''
+    })
     this.props.onSubmit({
       id: Date.now(),
       text: this.state.todoText,
@@ -29,12 +32,13 @@ class FormInput extends React.Component {
     return (
         <div>
           <form
-            onSubmit={this.handleSubmit}
+            onSubmit={(event) => this.handleSubmit(event)}
           >
             <div className="form">
               <input
                 name="text"
-                onChange={this.handleValueChange}
+                value={this.state.todoText}
+                onChange={(event) => this.handleValueChange(event)}
                 className="input-field"
                 type="text"
                 placeholder="What should I do?"
@@ -48,7 +52,6 @@ class FormInput extends React.Component {
             </div>
           </form>
         </div>
-
     );
   }
 }
