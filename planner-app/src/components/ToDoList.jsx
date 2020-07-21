@@ -1,22 +1,23 @@
 import React from "react";
 import FormInput from "./Form-Input";
 import ToDoItem from './ToDoItem'
+import DoneTitle from './DoneTitle'
 
 class ToDoList extends React.Component {
     state = {
-      todos: [] 
+      todos: [],
+      dones: [] 
     }
 
-
   addTodo(todo) {
-    if (todo.text != '') {
+    if (todo.text != ''){
       this.setState({
         todos: [todo, ...this.state.todos]
       });
     }
   };
 
-  moveToDone(id) {
+  handleDoneClick(id) {
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
@@ -33,16 +34,28 @@ class ToDoList extends React.Component {
   }
 
   render() {
+
     return (<div className="form-wrapper">
        <FormInput onSubmit = {(todo) => this.addTodo(todo)}></FormInput>
        {this.state.todos.map(todo => (
+          todo.complete? '' :
           <ToDoItem 
             key={todo.id}
             id={todo.id} 
-            moveToDone={() => this.moveToDone(todo.id)}
-            text={todo.text}
+            handleDoneClick={() => this.handleDoneClick(todo.id)}
+            todo={todo}
           > 
           </ToDoItem>
+       ))}
+       <DoneTitle></DoneTitle>
+       {this.state.todos.filter(todo => todo.complete === true).map(todo => (
+         todo.complete? 
+         <ToDoItem
+            key={todo.id}
+            id={todo.id} 
+            todo={todo}
+            > 
+          </ToDoItem> : ''
        ))}
        </div>
     );

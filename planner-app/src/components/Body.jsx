@@ -3,6 +3,7 @@ import ToDoTitle from "./ToDoTitle.jsx";
 import DoneTitle from "./DoneTitle.jsx";
 import "./styles.css";
 import ToDoList from "./ToDoList.jsx";
+import DoneList from "./DoneList"
 
 class Body extends React.Component {
   constructor(props) {
@@ -24,11 +25,16 @@ class Body extends React.Component {
             <ToDoList></ToDoList>
           </div>
         </div>
-        <div className="row">
+      {/*  <div className="row">
           <div className="col d-flex justify-content-center">
             <DoneTitle></DoneTitle>
           </div>
         </div>
+         <div className="row">
+          <div className="col d-flex justify-content-center">
+            <DoneList></DoneList>
+          </div>
+        </div> */}
       </div>
     );
   }
