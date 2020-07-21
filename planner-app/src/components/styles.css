@@ -1,8 +1,11 @@
+body {
+  background-image: linear-gradient(to right, rgba(160, 197, 145, 0.8), rgba(204, 172, 159, 0.9));
+  background-repeat: repeat-y;
+  background-size: cover;
+}
 .main-wrapper {
-    font-family: 'Kalam', cursive;
-    height: 100vh;
-    background-image: linear-gradient(to bottom right, rgba(160, 197, 145, 0.8), rgba(204, 172, 159, 0.9));
-  }
+  font-family: 'Kalam', cursive;
+}
 .form-wrapper {
   display: flex;
   text-align: center;
@@ -20,7 +23,10 @@
   border-bottom-left-radius: 3rem;
   text-align: center;
 }
-
+.input-field:focus, .submit-button:focus {
+  outline: none;
+  border: 1px solid #699259;
+}
 .submit-button {
   width: 7rem;
   border: 0px;
@@ -29,6 +35,9 @@
   height: 3.5rem;
   border-top-right-radius: 3rem;
   border-bottom-right-radius: 3rem;
+}
+.submit-button:hover {
+  background-color: #699259;
 }
 .list-wrapper {
   display: flex;
@@ -40,8 +49,14 @@
   align-items: center;
   align-self: center;
   width: 42rem;
-  background-color: wheat;
+  background-color: rgb(169, 181, 231);
+  border: 1px solid rgb(126, 144, 226);
   height: 3.5rem;
   border-radius: 2rem;
   margin-top: 2rem;
+}
+
+.list:hover {
+  background-color: rgb(149, 164, 226);
+
 }
