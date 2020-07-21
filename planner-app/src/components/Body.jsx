@@ -1,10 +1,9 @@
 import React from "react";
-import Title from "./Title.jsx";
-import FormInput from "./Form-Input.jsx";
-import TitleDone from "./TitleDone.jsx";
+import ToDoTitle from "./ToDoTitle.jsx";
+import DoneTitle from "./DoneTitle.jsx";
 import "./styles.css";
-import List from "./List.jsx";
-import ListItem from "./ListItem.jsx";
+import ToDoList from "./ToDoList.jsx";
+import DoneList from "./DoneList"
 
 class Body extends React.Component {
   constructor(props) {
@@ -18,19 +17,24 @@ class Body extends React.Component {
       <div className="container-fluid main-wrapper">
         <div className="row">
           <div className="col d-flex justify-content-center">
-            <Title></Title>
+            <ToDoTitle></ToDoTitle>
           </div>
         </div>
         <div className="row input-form">
           <div className="col">
-            <ListItem></ListItem>
+            <ToDoList></ToDoList>
           </div>
         </div>
-        <div className="row">
+      {/*  <div className="row">
           <div className="col d-flex justify-content-center">
-            <TitleDone></TitleDone>
+            <DoneTitle></DoneTitle>
           </div>
         </div>
+         <div className="row">
+          <div className="col d-flex justify-content-center">
+            <DoneList></DoneList>
+          </div>
+        </div> */}
       </div>
     );
   }

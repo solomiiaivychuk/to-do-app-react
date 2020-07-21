@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TitleDone extends React.Component {
+class DoneTitle extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -14,4 +14,4 @@ class TitleDone extends React.Component {
         );
     }
 }
-export default TitleDone
+export default DoneTitle
