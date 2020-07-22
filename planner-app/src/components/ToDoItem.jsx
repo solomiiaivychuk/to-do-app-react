@@ -10,7 +10,6 @@ class ToDoItem extends React.Component {
         <button className="done-button" onClick={this.props.moveToDone} >&#10004;</button>
         <span className="todo-text">{this.props.todo.text}</span>
         <span className="buttons-block">
-            <button className="delete-button" onClick={this.props.deleteItem}>&#10006;</button>
             <button 
                 style={{color: this.props.todo.favorite ? 'red' : ''}} 
                 className="favorite-button" 
@@ -18,7 +17,14 @@ class ToDoItem extends React.Component {
                 >
                     &#9733;
             </button>
-            <button className="edit-button">&#9998;</button>   
+            <button 
+            
+              className="edit-button"
+              onClick={this.props.editToDo}
+              >
+                &#9998;
+            </button>  
+            <button className="delete-button" onClick={this.props.deleteItem}>&#10006;</button> 
          </span>
       </div>
     );

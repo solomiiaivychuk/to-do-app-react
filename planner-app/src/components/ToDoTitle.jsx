@@ -10,7 +10,7 @@ class ToDoTitle extends React.Component {
 
     render() {
         return(
-            <h1 className="p-3"> { this.state.name } </h1> 
+            <h1 className="mt-5 mb-5"> { this.state.name } </h1> 
         );
     }
 }

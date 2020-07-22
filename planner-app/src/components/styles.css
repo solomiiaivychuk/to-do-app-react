@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, rgba(160, 197, 145, 0.8), rgba(204, 172, 159, 0.9));
+  background-image: linear-gradient(to right, rgba(162, 241, 131, 0.8), rgba(252, 173, 142, 0.9));
   background-repeat: repeat-y;
   background-size: cover;
 }
@@ -30,14 +30,14 @@ body {
 .submit-button {
   width: 7rem;
   border: 0px;
-  border-top: 1px solid #749e64;
-  background-color:  rgb(116, 158, 100);
+  border-top: 1px solid rgb(139, 189, 120);
+  background-color:  rgb(139, 189, 120);
   height: 3.5rem;
   border-top-right-radius: 3rem;
   border-bottom-right-radius: 3rem;
 }
 .submit-button:hover {
-  background-color: #699259;
+  background-color: rgb(127, 179, 107);
 }
 .list-wrapper {
   display: flex;
@@ -66,14 +66,14 @@ body {
   background-color: wheat;
   border: 1px solid rgb(126, 144, 226);
 }
-.done-button:hover {
+.done-button:hover, .delete-button:hover, .favorite-button:hover, .edit-button:hover, .done-button:hover {
   background-color: rgb(236, 207, 152);
 }
 .todo-text {
   align-self: center;
   justify-self: center;
 }
-.delete-button:focus, .favorite-button:focus, .edit-button:focus, .done-button:focus {
+.delete-button:focus, .favorite-button:focus, .edit-button:focus, .done-button:focus, .reset-button:focus {
   outline: none;
 }
 .buttons-block {
@@ -89,4 +89,17 @@ body {
   border: 0px;
   background-color: wheat;
   border: 1px solid rgb(126, 144, 226);
+}
+.reset-button {
+  background-color: rgb(255, 154, 137);
+  border: 1px solid rgb(243, 125, 104);
+  font-size: 1.5rem;
+  align-self: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}
+.reset-button:hover {
+  background-color: rgb(233, 128, 109);
 }

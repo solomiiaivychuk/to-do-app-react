@@ -3,6 +3,7 @@ import FormInput from "./Form-Input";
 import ToDoItem from "./ToDoItem";
 import DoneTitle from "./DoneTitle";
 import Favorites from "./Favorites";
+import ResetButton from "./ResetButton";
 
 class ToDoList extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class ToDoList extends React.Component {
 
 
   /* if text of todo item is not empty, add it to the array of todos */
-  
+
   addTodo(todo) {
     if (todo.text != "") {
       this.setState({
@@ -65,10 +66,18 @@ class ToDoList extends React.Component {
     });
   }
 
+  /* */
+
+  editToDo(id) {
+
+  }
+
+
   render() {
     return (
       <div className="form-wrapper">
         <FormInput onSubmit={(todo) => this.addTodo(todo)}></FormInput>
+        <ResetButton></ResetButton>
         <Favorites></Favorites>
 
         {/* render favorites and uncomplete items */}
@@ -135,6 +144,7 @@ class ToDoList extends React.Component {
               moveToDone={() => this.moveToDone(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              editToDo={() => this.editToDo(todo.id)}
             ></ToDoItem>
           ) : (
             ""
