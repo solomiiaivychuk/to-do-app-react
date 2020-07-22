@@ -4,7 +4,8 @@ class EditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        todoText : ''
+        todoText : '',
+        submitted : false
     }
   }
 
@@ -20,11 +21,13 @@ class EditForm extends React.Component {
      this.props.onSubmit({
       todoText: this.state.todoText,
     });
-    
+    this.setState({
+        submitted : !this.state.submitted
+    })
   }
 
   render() {
-    return (
+    return ( this.state.submitted ? this.state.todoText :
       <form
         className="edit-form"
         onSubmit={(event) => this.handleSubmit(event)}

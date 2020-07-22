@@ -4,14 +4,11 @@ import EditForm from "./EditForm"
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   todoText = ""
-    // }
   }
 
   changeTodoText(new_text) {
-    if (new_text != "") {
-      this.props.todo.text = new_text;
+    return {
+      new_text
     }
   }
 
