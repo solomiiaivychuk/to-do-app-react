@@ -2,12 +2,16 @@ import React from "react";
 import FormInput from "./Form-Input";
 import ToDoItem from "./ToDoItem";
 import DoneTitle from "./DoneTitle";
+import Favorites from "./Favorites";
 
 class ToDoList extends React.Component {
   state = {
     todos: [],
   };
 
+
+  /* if text of todo item is not empty, add it to the array of todos */
+  
   addTodo(todo) {
     if (todo.text != "") {
       this.setState({
@@ -16,7 +20,8 @@ class ToDoList extends React.Component {
     }
   }
 
-  handleDoneClick(id) {
+  /* reverse 'complete' state of item */
+  moveToDone(id) {
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
@@ -24,7 +29,7 @@ class ToDoList extends React.Component {
             id: todo.id,
             text: todo.text,
             complete: !todo.complete,
-            favourite: todo.favourite,
+            favorite: todo.favorite,
           };
         } else {
           return todo;
@@ -33,13 +38,17 @@ class ToDoList extends React.Component {
     });
   }
 
+  /* delete item by id */ 
+
   deleteItem(id) {
     this.setState({
       todos: this.state.todos.filter((todo) => todo.id !== id),
     });
   }
 
-  addToFavourite(id) {
+  /* reverse 'favorite' state of item */
+
+  addToFavorite(id) {
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
@@ -47,7 +56,7 @@ class ToDoList extends React.Component {
             id: todo.id,
             text: todo.text,
             complete: todo.complete,
-            favourite: !todo.favourite,
+            favorite: !todo.favorite,
           };
         } else {
           return todo;
@@ -60,30 +69,72 @@ class ToDoList extends React.Component {
     return (
       <div className="form-wrapper">
         <FormInput onSubmit={(todo) => this.addTodo(todo)}></FormInput>
+        <Favorites></Favorites>
+
+        {/* render favorites and uncomplete items */}
+
         {this.state.todos.map((todo) =>
-          todo.complete ? (
-            ""
-          ) : (
+          !todo.complete && todo.favorite ? (
             <ToDoItem
               key={todo.id}
               id={todo.id}
               todo={todo}
-              handleDoneClick={() => this.handleDoneClick(todo.id)}
+              moveToDone={() => this.moveToDone(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
-              addToFavourite={() => this.addToFavourite(todo.id)}
+              addToFavorite={() => this.addToFavorite(todo.id)}
             ></ToDoItem>
+          ) : (
+            ""
+          )
+        )}
+
+        {/* render non-favorites and uncomplete items */}
+
+        {this.state.todos.map((todo) =>
+          !todo.complete && !todo.favorite ? (
+            <ToDoItem
+              key={todo.id}
+              id={todo.id}
+              todo={todo}
+              moveToDone={() => this.moveToDone(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
+              addToFavorite={() => this.addToFavorite(todo.id)}
+            ></ToDoItem>
+          ) : (
+            ""
           )
         )}
         <DoneTitle></DoneTitle>
+        <Favorites></Favorites>
+
+        {/* render favorites and complete items */}
+
         {this.state.todos.map((todo) =>
-          todo.complete ? (
+          todo.complete && todo.favorite ? (
             <ToDoItem
               key={todo.id}
               id={todo.id}
               todo={todo}
-              handleDoneClick={() => this.handleDoneClick(todo.id)}
+              moveToDone={() => this.moveToDone(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
-              addToFavourite={() => this.addToFavourite(todo.id)}
+              addToFavorite={() => this.addToFavorite(todo.id)}
+            ></ToDoItem>
+          ) : (
+            ""
+          )
+        )}
+
+        {/* render non-favorites and complete items */}
+
+        {this.state.todos.map((todo) =>
+          todo.complete && !todo.favorite ? (
+            <ToDoItem
+              key={todo.id}
+              id={todo.id}
+              todo={todo}
+              moveToDone={() => this.moveToDone(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
+              addToFavorite={() => this.addToFavorite(todo.id)}
             ></ToDoItem>
           ) : (
             ""
