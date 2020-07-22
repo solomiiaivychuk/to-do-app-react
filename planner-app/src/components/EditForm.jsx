@@ -13,7 +13,6 @@ class EditForm extends React.Component {
     this.setState({
       todoText: event.target.value,
     });
-    console.log(this.state);
   }
 
   handleSubmit(event) {
