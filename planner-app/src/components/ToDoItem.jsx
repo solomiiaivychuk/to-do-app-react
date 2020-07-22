@@ -18,7 +18,6 @@ class ToDoItem extends React.Component {
                     &#9733;
             </button>
             <button 
-            
               className="edit-button"
               onClick={this.props.editToDo}
               >

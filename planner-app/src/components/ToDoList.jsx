@@ -69,7 +69,8 @@ class ToDoList extends React.Component {
   /* */
 
   editToDo(id) {
-
+    const item = this.state.todos.filter((todo) => todo.id == id);
+    console.log(item);
   }
 
 
@@ -89,8 +90,9 @@ class ToDoList extends React.Component {
               id={todo.id}
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
-              deleteItem={() => this.deleteItem(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              editToDo={() => this.editToDo(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
             ""
@@ -106,8 +108,9 @@ class ToDoList extends React.Component {
               id={todo.id}
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
-              deleteItem={() => this.deleteItem(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              editToDo={() => this.editToDo(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
             ""
@@ -125,8 +128,9 @@ class ToDoList extends React.Component {
               id={todo.id}
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
-              deleteItem={() => this.deleteItem(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              editToDo={() => this.editToDo(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
             ""
@@ -142,9 +146,9 @@ class ToDoList extends React.Component {
               id={todo.id}
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
-              deleteItem={() => this.deleteItem(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
               editToDo={() => this.editToDo(todo.id)}
+              deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
             ""
