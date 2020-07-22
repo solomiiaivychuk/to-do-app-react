@@ -31,6 +31,7 @@ class ToDoList extends React.Component {
             text: todo.text,
             complete: !todo.complete,
             favorite: todo.favorite,
+            toedit: todo.toedit,
           };
         } else {
           return todo;
@@ -58,6 +59,7 @@ class ToDoList extends React.Component {
             text: todo.text,
             complete: todo.complete,
             favorite: !todo.favorite,
+            toedit: todo.toedit,
           };
         } else {
           return todo;
@@ -66,11 +68,26 @@ class ToDoList extends React.Component {
     });
   }
 
-  /* */
+  /* edit todo after clicking the button "edit" */
 
   editToDo(id) {
     const item = this.state.todos.filter((todo) => todo.id == id);
     console.log(item);
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            id: todo.id,
+            text: todo.text,
+            complete: todo.complete,
+            favorite: todo.favorite,
+            toedit: !todo.toedit,
+          };
+        } else {
+          return todo;
+        }
+      }),
+    });
   }
 
 

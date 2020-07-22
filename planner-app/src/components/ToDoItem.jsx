@@ -1,14 +1,34 @@
 import React from "react";
+import EditForm from "./EditForm"
 
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   todoText = ""
+    // }
   }
+
+  changeTodoText(new_text) {
+    if (new_text != "") {
+      this.props.todo.text = new_text;
+    }
+  }
+
   render() {
     return (
       <div className="list">
         <button className="done-button" onClick={this.props.moveToDone} >&#10004;</button>
-        <span className="todo-text">{this.props.todo.text}</span>
+        <span 
+          className="todo-text"
+          >
+            {this.props.todo.toedit ? (
+            <EditForm onSubmit={(new_text) => this.changeTodoText(new_text)}></EditForm>
+            )
+            : (
+            this.props.todo.text 
+            ) } 
+        </span>
         <span className="buttons-block">
             <button 
                 style={{color: this.props.todo.favorite ? 'red' : ''}} 
