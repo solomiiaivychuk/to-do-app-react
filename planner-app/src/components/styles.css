@@ -73,7 +73,7 @@ body {
   align-self: center;
   justify-self: center;
 }
-.delete-button:focus, .favourite-button:focus, .edit-button:focus, .done-button:focus {
+.delete-button:focus, .favorite-button:focus, .edit-button:focus, .done-button:focus {
   outline: none;
 }
 .buttons-block {
@@ -81,7 +81,7 @@ body {
   align-self: center;
 
 }
-.delete-button, .favourite-button, .edit-button {
+.delete-button, .favorite-button, .edit-button {
   width: 2rem;
   border-radius: 1rem;
   margin: 0 0.3rem;

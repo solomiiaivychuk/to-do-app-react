@@ -1,7 +1,6 @@
 import React from 'react'
-import DoneItem from './DoneItem'
 
-class DoneList extends React.Component {
+class Favorites extends React.Component {
     constructor(props){
         super(props)
     }
@@ -12,4 +11,5 @@ class DoneList extends React.Component {
         )
     }
 }
-export default DoneList
+
+export default Favorites
