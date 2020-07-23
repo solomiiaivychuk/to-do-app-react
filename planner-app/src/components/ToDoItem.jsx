@@ -4,16 +4,23 @@ import EditForm from "./EditForm"
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      new_text: '',
+      old_text: this.props.todo.text
+    }
   }
 
 // !!!!!!! TO CHANGE!!!
-  changeTodoText(new_text) {
-    this.props.todo.toedit = !this.props.todo.toedit;
-    this.props.todo.text = new_text.todoText;
-  }
+  // changeTodoText(edited_text) {
+  //   this.setState({
+  //     new_text : edited_text,
+  //   })
+  //   console.log(this.state.new_text);
+  //   this.props.todo.toedit = !this.props.todo.toedit;
+  //   this.props.todo.text = edited_text.todoText;
+  // }
 
-
-
+  
   render() {
     return (
       <div className="list">
@@ -23,8 +30,12 @@ class ToDoItem extends React.Component {
           >
             {this.props.todo.toedit ? (
             <EditForm 
-              onSubmit={(new_text) => this.changeTodoText(new_text)}
-              onEscapePress={() => this.changeTodoText(this.props.todo.text)}
+              text={this.props.todo.text}
+              changeTodoText={this.props.changeTodoText}
+              addToEdit={this.props.addToEdit}
+              //removeFromEdit={this.props.removeFromEdit}
+              //onEscape={() => this.props.addToEdit()}
+              //onKeyUp={() => this.props.changeTodoText(this.props.todo.text)}
               ></EditForm>
             )
             : (

@@ -7,6 +7,8 @@ import ResetButton from "./ResetButton";
 class ToDoList extends React.Component {
   state = {
     todos: [],
+    new_text : '',
+    
   };
 
 
@@ -67,18 +69,25 @@ class ToDoList extends React.Component {
     });
   }
 
+/* TO REWRITE */
+
+changeTodoText(edited_text) {
+  this.setState({
+    new_text : edited_text,
+  })
+}
+
   /* edit todo after clicking the button "edit" */
 
   addToEdit(id) {
-    const item = this.state.todos.filter((todo) => todo.id == id);
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
           return {
             id: todo.id,
-            text: todo.text,
             complete: todo.complete,
             favorite: todo.favorite,
+            text: this.state.new_text ? this.state.new_text : todo.text,
             toedit: !todo.toedit,
           };
         } else {
@@ -88,24 +97,22 @@ class ToDoList extends React.Component {
     });
   }
 
-/* TO REWRITE */
-
-  changeText(id, new_text) {
+  removeFromEdit(id) {
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
           return {
             id: todo.id,
-            text: new_text,
             complete: todo.complete,
             favorite: todo.favorite,
+            text: todo.text,
             toedit: !todo.toedit,
           };
         } else {
           return todo;
         }
       }),
-    })
+    });
   }
 
   /* clear all todos list after clicking the button "reset" */
@@ -135,6 +142,8 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              changeTodoText={(edited_text) => this.changeTodoText(edited_text)}
+              removeFromEdit={() => this.removeFromEdit(todo.id)}
               addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
@@ -153,6 +162,8 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              changeTodoText={(edited_text) => this.changeTodoText(edited_text)}
+              removeFromEdit={() => this.removeFromEdit(todo.id)}
               addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
@@ -172,6 +183,8 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              changeTodoText={(edited_text) => this.changeTodoText(edited_text)}
+              removeFromEdit={() => this.removeFromEdit(todo.id)}
               addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
@@ -187,9 +200,11 @@ class ToDoList extends React.Component {
             <ToDoItem
               key={todo.id}
               id={todo.id}
-              todo={todo}
+              text={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
+              changeTodoText={(edited_text) => this.changeTodoText(edited_text)}
+              removeFromEdit={() => this.removeFromEdit(todo.id)}
               addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>

@@ -5,7 +5,8 @@ class EditForm extends React.Component {
     super(props);
     this.state = {
         todoText : '',
-        submitted : false
+        submitted : false,
+        old_text : this.props.text
     }
   }
 
@@ -17,18 +18,22 @@ class EditForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-     this.props.onSubmit({
-      todoText: this.state.todoText,
-    });
+    console.log(this.state.todoText);
+    this.props.changeTodoText(this.state.todoText);
     this.setState({
-        submitted : !this.state.submitted
+      
+      submitted : !this.state.submitted
     })
+    this.props.addToEdit();
   }
 
   handleEscape(event) {
     if (event.key == "Escape") {
-      this.setState ({
-        submitted : !this.state.submitted
+      // this.setState({
+      //   submitted: !this.state.submitted
+      // })
+      this.props.onEscape({
+        todoText: this.state.old_text,
       })
     }
   }
@@ -38,7 +43,7 @@ class EditForm extends React.Component {
       <form
         className="edit-form"
         onSubmit={(event) => this.handleSubmit(event)}
-        onEscapePress={(event) => this.handleEscape(event)}
+        onKeyUp={(event) => this.handleEscape(event)}
       >
         <input
             name="text"
@@ -48,7 +53,11 @@ class EditForm extends React.Component {
             type="text"
             placeholder="edit todo..."
         ></input>
-        <button className="edit-form-button">ok</button>
+        <button 
+          className="edit-form-button"
+        >
+          ok
+        </button>
       </form>
     );
   }
