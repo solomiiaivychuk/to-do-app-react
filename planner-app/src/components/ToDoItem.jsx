@@ -4,10 +4,8 @@ import EditForm from "./EditForm"
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todo = ''
-    }
   }
+
 // !!!!!!! TO CHANGE!!!
   changeTodoText(new_text) {
     this.props.todo.toedit = !this.props.todo.toedit;
@@ -38,7 +36,7 @@ class ToDoItem extends React.Component {
             </button>
             <button 
               className="edit-button"
-              onClick={this.props.editToDo}
+              onClick={this.props.addToEdit}
               >
                 &#9998;
             </button>  

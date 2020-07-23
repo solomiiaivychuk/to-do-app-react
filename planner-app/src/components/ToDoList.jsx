@@ -70,7 +70,7 @@ class ToDoList extends React.Component {
 
   /* edit todo after clicking the button "edit" */
 
-  editToDo(id) {
+  addToEdit(id) {
     const item = this.state.todos.filter((todo) => todo.id == id);
     this.setState({
       todos: this.state.todos.map((todo) => {
@@ -89,6 +89,23 @@ class ToDoList extends React.Component {
     });
   }
 
+  changeText(id, new_text) {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            id: todo.id,
+            text: new_text,
+            complete: todo.complete,
+            favorite: todo.favorite,
+            toedit: !todo.toedit,
+          };
+        } else {
+          return todo;
+        }
+      }),
+    })
+  }
 
   render() {
     return (
@@ -107,7 +124,7 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
-              editToDo={() => this.editToDo(todo.id)}
+              addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
@@ -125,7 +142,7 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
-              editToDo={() => this.editToDo(todo.id)}
+              addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
@@ -145,7 +162,7 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
-              editToDo={() => this.editToDo(todo.id)}
+              addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
@@ -163,7 +180,7 @@ class ToDoList extends React.Component {
               todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
-              editToDo={() => this.editToDo(todo.id)}
+              addToEdit={() => this.addToEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
