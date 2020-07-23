@@ -2,7 +2,6 @@ import React from "react";
 import FormInput from "./Form-Input";
 import ToDoItem from "./ToDoItem";
 import DoneTitle from "./DoneTitle";
-import Favorites from "./Favorites";
 import ResetButton from "./ResetButton";
 
 class ToDoList extends React.Component {
@@ -89,6 +88,8 @@ class ToDoList extends React.Component {
     });
   }
 
+/* TO REWRITE */
+
   changeText(id, new_text) {
     this.setState({
       todos: this.state.todos.map((todo) => {
@@ -107,13 +108,23 @@ class ToDoList extends React.Component {
     })
   }
 
+  /* clear all todos list after clicking the button "reset" */
+
+  resetTodos() {
+    this.setState({
+      todos: []
+    })
+  }
+
   render() {
     return (
       <div className="form-wrapper">
         <FormInput onSubmit={(todo) => this.addTodo(todo)}></FormInput>
-        <ResetButton></ResetButton>
-        <Favorites></Favorites>
-
+        {this.state.todos.length > 0 ? (
+          <ResetButton resetTodos={() => this.resetTodos()}></ResetButton>
+        ) : ""
+      }
+      
         {/* render favorites and uncomplete items */}
 
         {this.state.todos.map((todo) =>
@@ -150,7 +161,6 @@ class ToDoList extends React.Component {
           )
         )}
         <DoneTitle></DoneTitle>
-        <Favorites></Favorites>
 
         {/* render favorites and complete items */}
 
