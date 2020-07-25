@@ -19,19 +19,18 @@ class EditForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.todoText);
+    this.props.changeFormState();
     this.props.changeTodoText(this.state.todoText);
     this.setState({
-      
       submitted : !this.state.submitted
     })
-    this.props.addToEdit();
   }
 
   handleEscape(event) {
     if (event.key == "Escape") {
-      // this.setState({
-      //   submitted: !this.state.submitted
-      // })
+      this.setState({
+        submitted: !this.state.submitted
+      })
       this.props.onEscape({
         todoText: this.state.old_text,
       })

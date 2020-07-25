@@ -7,8 +7,7 @@ import ResetButton from "./ResetButton";
 class ToDoList extends React.Component {
   state = {
     todos: [],
-    new_text : '',
-    
+    new_text : '', 
   };
 
 
@@ -69,12 +68,14 @@ class ToDoList extends React.Component {
     });
   }
 
-/* TO REWRITE */
 
 changeTodoText(edited_text) {
+  console.log(this.state.new_text)
+  console.log(edited_text)
   this.setState({
     new_text : edited_text,
-  })
+  });
+  console.log(this.state.new_text)
 }
 
   /* edit todo after clicking the button "edit" */
@@ -143,8 +144,8 @@ changeTodoText(edited_text) {
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
               changeTodoText={(edited_text) => this.changeTodoText(edited_text)}
-              removeFromEdit={() => this.removeFromEdit(todo.id)}
               addToEdit={() => this.addToEdit(todo.id)}
+              removeFromEdit={() => this.removeFromEdit(todo.id)}
               deleteItem={() => this.deleteItem(todo.id)}
             ></ToDoItem>
           ) : (
@@ -200,7 +201,7 @@ changeTodoText(edited_text) {
             <ToDoItem
               key={todo.id}
               id={todo.id}
-              text={todo}
+              todo={todo}
               moveToDone={() => this.moveToDone(todo.id)}
               addToFavorite={() => this.addToFavorite(todo.id)}
               changeTodoText={(edited_text) => this.changeTodoText(edited_text)}

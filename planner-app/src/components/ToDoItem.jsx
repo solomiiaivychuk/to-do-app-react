@@ -6,21 +6,25 @@ class ToDoItem extends React.Component {
     super(props);
     this.state = {
       new_text: '',
-      old_text: this.props.todo.text
+      old_text: this.props.todo.text,
+      submitted : false
     }
   }
 
-// !!!!!!! TO CHANGE!!!
-  // changeTodoText(edited_text) {
-  //   this.setState({
-  //     new_text : edited_text,
-  //   })
-  //   console.log(this.state.new_text);
-  //   this.props.todo.toedit = !this.props.todo.toedit;
-  //   this.props.todo.text = edited_text.todoText;
-  // }
+  changeFormState() {
+    this.setState({
+      submitted: !this.state.submitted
+    })
+    this.props.removeFromEdit();
+  }
 
-  
+  changeTodoText(text) {
+    this.setState({
+      new_text: text,
+    })
+    this.props.changeTodoText(text);
+  }
+
   render() {
     return (
       <div className="list">
@@ -28,19 +32,15 @@ class ToDoItem extends React.Component {
         <span 
           className="todo-text"
           >
-            {this.props.todo.toedit ? (
+            {!this.props.todo.toedit ? ( this.props.todo.text ): (
             <EditForm 
-              text={this.props.todo.text}
-              changeTodoText={this.props.changeTodoText}
+              changeTodoText={(text) => this.changeTodoText(text)}
               addToEdit={this.props.addToEdit}
-              //removeFromEdit={this.props.removeFromEdit}
-              //onEscape={() => this.props.addToEdit()}
-              //onKeyUp={() => this.props.changeTodoText(this.props.todo.text)}
+              changeFormState={() => this.changeFormState()}
+              onEscape={() => this.props.removeFromEdit()}
               ></EditForm>
             )
-            : (
-            this.props.todo.text 
-            ) } 
+           } 
         </span>
         <span className="buttons-block">
             <button 
