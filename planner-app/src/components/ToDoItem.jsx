@@ -4,12 +4,25 @@ import EditForm from "./EditForm"
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      new_text: '',
+      old_text: this.props.todo.text,
+      submitted : false
+    }
   }
 
-// !!!!!!! TO CHANGE!!!
-  changeTodoText(new_text) {
-    this.props.todo.toedit = !this.props.todo.toedit;
-    this.props.todo.text = new_text.todoText;
+  changeFormState() {
+    this.setState({
+      submitted: !this.state.submitted
+    })
+    this.props.removeFromEdit();
+  }
+
+  changeTodoText(text) {
+    this.setState({
+      new_text: text,
+    })
+    this.props.changeTodoText(text);
   }
 
   render() {
@@ -19,12 +32,15 @@ class ToDoItem extends React.Component {
         <span 
           className="todo-text"
           >
-            {this.props.todo.toedit ? (
-            <EditForm onSubmit={(new_text) => this.changeTodoText(new_text)}></EditForm>
+            {!this.props.todo.toedit ? ( this.props.todo.text ): (
+            <EditForm 
+              changeTodoText={(text) => this.changeTodoText(text)}
+              addToEdit={this.props.addToEdit}
+              changeFormState={() => this.changeFormState()}
+              onEscape={() => this.props.removeFromEdit()}
+              ></EditForm>
             )
-            : (
-            this.props.todo.text 
-            ) } 
+           } 
         </span>
         <span className="buttons-block">
             <button 
